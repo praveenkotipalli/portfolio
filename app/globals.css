@@ -1,0 +1,38 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@font-face {
+  font-family: 'PS Kaldera';
+  src: url('./fonts/PS-Kaldera-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@layer base {
+  body {
+    background-color: #1A1A1A; 
+    color: white;
+    /* cursor: pointer; */
+  }
+}
+@layer utilities {
+  .animate-marquee {
+    /* Try changing 20s to 30s for a slower, smoother effect */
+    animation: marquee 10s linear infinite;
+  }
+  .font-kaldera {
+    font-family: 'PS Kaldera';
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0%); }
+  to { transform: translateX(-100%); }
+}
+
+body.hide-pochita-cursor #pochita-cursor {
+  opacity: 0 !important; /* Use !important to override inline style */
+  transition: opacity 0.2s ease-in-out;
+}
