@@ -10,6 +10,7 @@ const SpeechBubble: React.FC<SpeechBubbleProps> = ({ text, isVisible }) => {
   return (
     // The main container for the bubble
     <div
+    style={{ backgroundColor: '#CFCFCF' }}
       className={`
         absolute z-20 // Above image, below cursor
         

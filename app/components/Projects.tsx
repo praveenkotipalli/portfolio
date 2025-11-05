@@ -60,7 +60,7 @@ const Projects: React.FC = () => {
           ref={titleRef} 
           style={{ willChange: 'transform' }}
         > 
-          <h2 className="text-6xl font- text-center md:text-left md:ml-20 mb-16">
+          <h2 className="text-6xl font- text-center md:text-left md:ml-20 mb-16" style={{ color: '#CFCFCF' }}>
             Projects
           </h2>
         </div>

@@ -2,7 +2,8 @@ import React from 'react';
 
 const MarqueeText: React.FC = () => {
   return (
-    <div className="flex overflow-hidden whitespace-nowrap select-none">
+    <div className="flex overflow-hidden whitespace-nowrap select-none"
+    style={{ color: '#CFCFCF' }}>
       
       <div className="animate-marquee flex-shrink-0">
         <span 

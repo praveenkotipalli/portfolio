@@ -33,7 +33,7 @@ export const ProjectCard = React.forwardRef<
     // 3. Apply the hover events to the outer motion.div
     <motion.div
       ref={ref}
-      className="w-full max-w-xs" // Container
+      className="w-full" // <-- 1. REMOVED max-w-xs from here
       onMouseEnter={onMouseEnter} // <-- ADD THIS
       onMouseLeave={onMouseLeave} // <-- ADD THIS
     >
@@ -41,7 +41,11 @@ export const ProjectCard = React.forwardRef<
         href={href}
         className="group w-full h-96 rounded-md shadow-xl
                    overflow-hidden relative block
-                   cursor-none" // This hides the default cursor
+                   cursor-none
+                   
+                   transition-shadow duration-300 ease-in-out
+                   hover:shadow-2xl" // <-- 2. ADDED shadow transition
+                   
         target="_blank"
       >
         {/* --- All your existing image and text layers stay the same --- */}
@@ -76,10 +80,10 @@ export const ProjectCard = React.forwardRef<
   
         {/* Text Content */}
         <div className="relative z-10 flex flex-col justify-end h-full p-4">
-          <h1 className="font-bold text-xl md:text-2xl text-white relative">
+          <h1 className="font-bold text-xl md:text-2xl text-white relative" style={{ color: '#CFCFCF' }}>
             {title}
           </h1>
-          <p className="font-normal text-base text-gray-200 relative my-2">
+          <p className="font-normal text-base text-gray-200 relative my-2" style={{ color: '#CFCFCF' }}>
             {description}
           </p>
         </div>

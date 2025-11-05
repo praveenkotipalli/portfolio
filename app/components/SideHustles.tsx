@@ -70,8 +70,9 @@ const SideHustles: React.FC = () => {
     <section 
       id="side-hustles" 
       ref={sectionRef} 
-      style={{ backgroundColor: '#111111' }} 
+      style={{ backgroundColor: '#111111', color: '#CFCFCF' }} 
       className="py-24 px-10 text-white rounded-tl-2xl rounded-tr-2xl"
+      
     >
       <div className="flex flex-col md:flex-row md:gap-16">
         {/* Left Column (Title) - Unchanged */}
@@ -80,7 +81,7 @@ const SideHustles: React.FC = () => {
           ref={titleRef} 
           style={{ willChange: 'transform' }}
         > 
-          <h2 className="text-6xl font- ml-20 mb-16 md:mb-0">
+          <h2 className="text-6xl font- ml-20 mb-16 md:mb-0" >
             Code & Curiosities
           </h2>
         </div>
@@ -114,6 +115,7 @@ const SideHustles: React.FC = () => {
                     hover:bg-gray-800 transition-colors duration-200
                     text-lg text-gray-400 hover:text-white
                   `}
+                  style={{ color: '#CFCFCF' }}
                   
                 >
                  {project.title}
