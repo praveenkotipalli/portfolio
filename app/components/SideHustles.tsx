@@ -6,6 +6,7 @@ import React, { useRef, useEffect } from 'react';
 import { Tooltip } from "@/components/ui/tooltip-card";
 // 2. Import the new card we just made
 import ProjectTooltipCard from "./ProjectTooltipCard";
+import { desc } from 'framer-motion/client';
 
 // 3. Updated the data to include images and descriptions
 const sideProjects = [
@@ -16,22 +17,28 @@ const sideProjects = [
     imageUrl: "/Screenshot 2025-11-05 160021.png" // Add to /public/spotify-thumb.jpg
   },
   { 
-    title: "Floor Cleaning Robot (Hardware)", 
+    title: "Hirely - AI Interview Prep App with Voice Agent", 
     href: "#",
-    description: "An Arduino-based robot prototype for autonomous floor cleaning.",
-    imageUrl: "/robot-thumb.jpg" // Add to /public/robot-thumb.jpg
+    description: "Built a React-Firebase app integrating Vapi for real-time voice interaction and Gemini AI for intelligent question generation and performance evaluation, creating a realistic AI-powered interview experience.",
+    imageUrl: "/Screenshot 2025-11-05 162347.png" // Add to /public/robot-thumb.jpg
   },
   { 
     title: "Personal Portfolio (This Site)", 
     href: "#",
-    description: "The very site you're on, built with Next.js and Framer Motion.",
-    imageUrl: "/portfolio-thumb.jpg" // Add to /public/portfolio-thumb.jpg
+    description: "The very site you're on, you're looking at it! My digital sandbox, built from scratch with Next.js, Tailwind, and a lot of custom (and sometimes stubborn) animations.",
+    imageUrl: "/Screenshot 2025-11-05 163802.png" // Add to /public/portfolio-thumb.jpg
+  },
+  {
+    title: "TitanVerse – Attack on Titan Showcase",
+    href: "https://praveeninctest.framer.website/",
+    description: "Designed an interactive Framer experience showcasing Attack on Titan characters using advanced scroll animations and motion design to demonstrate UI/UX creativity and visual storytelling.",
+    imageUrl: "/Screenshot 2025-11-05 163252.png" // Add to /public/spotify-thumb.jpg
   },
   { 
     title: "More on GitHub...", 
-    href: "https://github.com/your-username",
+    href: "https://github.com/praveenkotipalli",
     description: "See all my other projects, experiments, and contributions.",
-    imageUrl: "/github-thumb.jpg" // Add to /public/github-thumb.jpg
+    imageUrl: "/Screenshot 2025-11-05 163942.png" // Add to /public/github-thumb.jpg
   },
 ];
 
@@ -64,7 +71,7 @@ const SideHustles: React.FC = () => {
       id="side-hustles" 
       ref={sectionRef} 
       style={{ backgroundColor: '#111111' }} 
-      className="py-24 px-10 text-white overflow-hidden rounded-tl-2xl rounded-tr-2xl"
+      className="py-24 px-10 text-white rounded-tl-2xl rounded-tr-2xl"
     >
       <div className="flex flex-col md:flex-row md:gap-16">
         {/* Left Column (Title) - Unchanged */}
