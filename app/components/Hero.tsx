@@ -48,14 +48,14 @@ const Hero: React.FC = () => {
       </div>
 
       {/* BONUS WIDGETS: Added z-20 to ensure they are on top */}
-      <div className="absolute bottom-8 left-8 z-20 p-3 rounded-lg flex items-center gap-3
+      {/* <div className="absolute bottom-8 left-8 z-20 p-3 rounded-lg flex items-center gap-3
                       bg-gray-900/50 backdrop-blur-md border border-gray-700/50">
         <div className="w-12 h-12 bg-gray-700 rounded animate-pulse"></div>
         <div>
           <p className="font-semibold">Dancing With Your Ghost</p>
           <p className="text-sm text-gray-300">Sasha Alex Sloan</p>
         </div>
-      </div>
+      </div> */}
       
 
       {/* <div className="absolute bottom-8 right-8 z-20 px-3 py-1.5 rounded-lg
