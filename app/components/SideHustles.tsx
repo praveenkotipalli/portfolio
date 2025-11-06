@@ -18,7 +18,7 @@ const sideProjects = [
   },
   { 
     title: "Hirely - AI Interview Prep App with Voice Agent", 
-    href: "#",
+    href: "https://github.com/praveenkotipalli/ai-interview-platform",
     description: "Built a React-Firebase app integrating Vapi for real-time voice interaction and Gemini AI for intelligent question generation and performance evaluation, creating a realistic AI-powered interview experience.",
     imageUrl: "/Screenshot 2025-11-05 162347.png" // Add to /public/robot-thumb.jpg
   },
@@ -89,15 +89,17 @@ const SideHustles: React.FC = () => {
         {/* --- UPDATED Right Column (Project List) --- */}
         <div className="md:w-2/3">
           {/* This div is the "box" with no left/right borders */}
-          <div className="flex flex-col" >
+          <div className="flex flex-col " >
             {sideProjects.map((project, index) => (
               // 4. Use the Aceternity Tooltip component
               <Tooltip
+              
               
                 key={project.title}
                 // 5. Pass our custom card as the 'content'
                 content={
                   <ProjectTooltipCard
+                  
                     title={project.title}
                     description={project.description}
                     imageUrl={project.imageUrl}

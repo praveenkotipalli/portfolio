@@ -3,6 +3,8 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
 import SideHustles from './components/SideHustles';
+import Credentials from './components/Credentials';
+import Contact from './components/Contact';
 // Import any other components you have, like Contact
 
 const Home: React.FC = () => {
@@ -18,6 +20,8 @@ const Home: React.FC = () => {
         <About />
         <Projects />
         <SideHustles />
+        <Credentials />
+        <Contact/>
         {/* <Contact /> */}
       </div>
     </main>

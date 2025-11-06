@@ -36,3 +36,47 @@ body.hide-pochita-cursor #pochita-cursor {
   opacity: 0 !important; /* Use !important to override inline style */
   transition: opacity 0.2s ease-in-out;
 }
+
+/* ... (keep all your other CSS) ... */
+
+/* --- STYLES FOR INTERACTIVE CONTACT FORM --- */
+
+/* Base style for the inline inputs */
+.form-input-inline {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #555; /* Dim underline */
+  color: white;
+  padding: 4px 8px;
+  font-size: 1.5rem; /* 24px */
+  line-height: 2rem; /* 32px */
+  transition: all 0.3s ease;
+  width: 300px; /* Default width */
+}
+
+/* Make text area width 100% */
+.form-input-inline-textarea {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* Glow effect when focused */
+.form-input-inline:focus {
+  outline: none;
+  border-bottom-color: #06b6d4; /* Cyan color */
+  box-shadow: 0 4px 10px -5px #06b6d4;
+}
+
+/* Style for the submit "button" */
+.form-submit-link {
+  font-size: 1.875rem; /* 30px */
+  line-height: 2.25rem; /* 36px */
+  font-weight: 700;
+  color: #06b6d4; /* Cyan color */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.form-submit-link:hover {
+  text-shadow: 0 0 15px #06b5d45b;
+}

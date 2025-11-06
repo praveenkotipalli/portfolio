@@ -14,7 +14,7 @@ const ProjectTooltipCard: React.FC<ProjectTooltipCardProps> = ({
 }) => {
   return (
     // This is the black card
-    <div className=" p- rounded-lg  w-60 " style={{ backgroundColor: '#CFCFCF' }}>
+    <div className=" p- rounded-lg  w-60  " style={{ backgroundColor: '#CFCFCF' }}>
       {/* YouTube thumbnail size (16:9) */}
       <img
         src={imageUrl}
