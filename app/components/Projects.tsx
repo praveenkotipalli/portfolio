@@ -12,7 +12,7 @@ const projectData = [
     description: "A Project Management tool which helps teams collaborate and stay organized.",
     staticImage: "/image.png", // Add a 16:9 image to /public/project-notepad.jpg
     hoverImage: "/timeline-1_5LZllUKN.gif", // Add a GIF to /public/project-notepad.gif
-    href: "https://github.com/your-username/your-project", // Change this
+    href: "https://unsplash1.framer.website/", // Change this
   },
   {
     title: "Uber Clone",
