@@ -1,13 +1,13 @@
 // app/components/Credentials.tsx
 'use client'; 
 
-// 1. Import the hooks we need
 import React, { useState, useEffect, useRef } from 'react';
-import { useInView } from "framer-motion"; // 2. Import useInView
+import { useInView } from "framer-motion"; 
 import { Highlighter } from '@/components/ui/highlighter';
-import { ScrollVelocityContainer, ScrollVelocityRow } from '@/components/ui/scroll-based-velocity';
+// 1. Import our new CertificateFolder
+import { CertificateFolder } from './CertificateFolder';
 
-// Your Experience Data
+// Your Experience Data (Unchanged)
 const workExperience = [
   {
     role: "Full Stack Developer Intern",
@@ -16,52 +16,44 @@ const workExperience = [
   },
 ];
 
-// Your Certification Data
+// 2. UPDATED certification data to be a list of image paths
 const certifications = [
-  "Salesforce Platform Developer I",
-  "Salesforce AI Associate",
-  "RedHat Enterprise Application Developer", // Placeholder
-  "Github Foundations",     // Placeholder
-  "Postman API Expert"
+  "cert1card.avif",
+  "cert2card.avif",
+  "cert3card.avif",
+  "cert4card.avif",
+];
+
+// Your Skill Set Data (Unchanged)
+const skillSet = [
+  "Java", "React", "Next.js", "Node.js", "Spring Boot", "Salesforce", "Docker",
+  "JavaScript", "TypeScript", "MongoDB", "SQL", "Firebase", "Git", "React Native"
 ];
 
 const Credentials: React.FC = () => {
-  // 3. Create a state to control the animation
   const [startAnimation, setStartAnimation] = useState(false);
-  
-  // 4. Create a ref for the title
   const titleRef = useRef(null);
-  
-  // 5. Set up the inView hook
-  // It will only trigger once
   const isInView = useInView(titleRef, { once: true });
 
-  // 6. Use useEffect to start the timer
   useEffect(() => {
-    // When isInView becomes true
     if (isInView) {
-      // Start a 2-second timer
       const timer = setTimeout(() => {
-        // After 2 seconds, set startAnimation to true
         setStartAnimation(true);
-      }, 2000); // 2000ms = 2 seconds
-      
-      // Clean up the timer if the component unmounts
+      }, 2000); 
       return () => clearTimeout(timer);
     }
-  }, [isInView]); // This effect runs when 'isInView' changes
+  }, [isInView]); 
 
   return (
     <section 
       id="credentials" 
-      style={{ backgroundColor: '#CFCFCF' }} // Using your light color
+      style={{ backgroundColor: '#CFCFCF' }} 
       className="py-24 px-10 text-black rounded-tl-2xl rounded-tr-2xl"
     >
+      {/* Title (Unchanged) */}
       <div className="text-center">
-        {/* 7. Attach the ref to the h2 tag */}
         <h2 ref={titleRef} className="mb-20 text-4xl md:text-6xl font-semibold leading-relaxed">
           My{" "}
-          {/* 8. Conditionally render the highlighter */}
           {startAnimation ? (
             <Highlighter  action="underline" color="#87CEFA">
               Credentials
@@ -72,12 +64,10 @@ const Credentials: React.FC = () => {
         </h2>
       </div>
 
-      {/* Two-Column Layout */}
       <div className="flex flex-col md:flex-row md:gap-16 max-w-6xl mx-auto">
 
-        {/* --- LEFT COLUMN (Work Experience) --- */}
+        {/* --- LEFT COLUMN (Work Experience) --- Unchanged */}
         <div className="md:w-1/2">
-          {/* --- THIS IS THE CHANGE --- */}
           <h3 className="text-4xl font-semibold mb-8">
             {startAnimation ? (
               <Highlighter action="highlight" color="#FF9800">
@@ -96,9 +86,8 @@ const Credentials: React.FC = () => {
           ))}
         </div>
 
-        {/* --- RIGHT COLUMN (Certifications) --- */}
+        {/* --- 3. RIGHT COLUMN (Certifications) --- REPLACED */}
         <div className="md:w-1/2 mt-16 md:mt-0">
-          {/* --- THIS IS THE CHANGE --- */}
           <h3 className="text-4xl font-semibold mb-8">
             {startAnimation ? (
               <Highlighter action="highlight" color="#FF9800">
@@ -109,19 +98,35 @@ const Credentials: React.FC = () => {
             )}
           </h3>
           
-          <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-            <ScrollVelocityContainer className="text-2xl font-semibold">
-              <ScrollVelocityRow baseVelocity={5} direction={1}>
-                {certifications.map((cert) => (
-                  <span key={cert} className="mx-4 p-4 border-b border-t border-gray-400">
-                    {cert}
-                  </span>
-                ))}
-              </ScrollVelocityRow>
-            </ScrollVelocityContainer>
-            <div className="from-[#CFCFCF] pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r"></div>
-            <div className="from-[#CFCFCF] pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l"></div>
-          </div>
+          {/* Replace the old list with our new component */}
+          <CertificateFolder certs={certifications} />
+        </div>
+      </div>
+
+      {/* --- "MY TOOLKIT" SECTION --- Unchanged */}
+      <div className="max-w-6xl mx-auto mt-24">
+        <h3 className="text-4xl font-semibold mb-12 text-center md:text-left">
+          {startAnimation ? (
+            <Highlighter action="highlight" color="#FF9800">
+              My Toolkit
+            </Highlighter>
+          ) : (
+            "My Toolkit"
+          )}
+        </h3>
+
+        <div className="flex flex-wrap gap-3">
+          {skillSet.map((skill, index) => (
+            <span 
+              key={skill} 
+              className={`
+                p-3 rounded-lg font-semibold shadow-md
+                ${index % 3 === 0 ? 'bg-gray-700 text-white' : 'bg-gray-200 text-black'}
+              `}
+            >
+              {skill}
+            </span>
+          ))}
         </div>
       </div>
     </section>
