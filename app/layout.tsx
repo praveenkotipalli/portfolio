@@ -5,6 +5,7 @@ import { Actor } from "next/font/google";
 // import localFont from "next/font/local"; 
 import "./globals.css";
 import CustomCursor from "./components/CustomCursor";
+import { SmoothCursor } from "@/components/ui/smooth-cursor";
 
 // 2. Initialize Inter for your main body text
 const inter = Inter({ 
@@ -41,6 +42,10 @@ export default function RootLayout({
       <body className={`${actor.className}`}> 
         {children}
         <CustomCursor />
+
+        <div id="smooth-cursor">
+          <SmoothCursor />
+        </div>
       </body>
     </html>
   );
