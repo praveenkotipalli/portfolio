@@ -1,4 +1,4 @@
-// app/components/CustomCursor.tsx
+
 'use client'; 
 
 import React, { useRef, useEffect, useState } from 'react'; 
@@ -9,7 +9,7 @@ const CustomCursor: React.FC = () => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    // ... (useEffect logic is all correct)
+    
     const onMouseMove = (e: MouseEvent) => {
       if (cursorRef.current) {
         cursorRef.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
@@ -27,7 +27,7 @@ const CustomCursor: React.FC = () => {
     const onMouseLeave = () => {
       timeoutRef.current = setTimeout(() => {
         setIsVisible(false);
-      }, 3000); // 3000ms = 3 seconds
+      }, 3000); 
     };
     
     window.addEventListener('mousemove', onMouseMove);
@@ -61,14 +61,10 @@ const CustomCursor: React.FC = () => {
         width={105} 
         height={105}
         style={{
-          // --- THIS IS THE CHANGE ---
-          // Was: marginLeft: '-24px', (centered)
-          // Was: marginTop: '-24px',  (centered)
           
-          // Now: Small positive values to move it down and right
           marginLeft: '10px', 
           marginTop: '10px',
-          // --- END OF CHANGE ---
+          
         }}
       />
     </div>

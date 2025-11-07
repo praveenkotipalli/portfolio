@@ -14,7 +14,7 @@
   body {
     background-color: #1A1A1A; 
     color: white;
-    /* cursor: pointer; */
+    /* cursor: col-resize; */
   }
 }
 @layer utilities {

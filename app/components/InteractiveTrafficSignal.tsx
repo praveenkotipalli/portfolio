@@ -7,7 +7,7 @@ const InteractiveTrafficSignal: React.FC = () => {
   return (
     <div className="relative w-full max-w-[500px] ml-70 aspect-[3/4]">
       
-      {/* Your JPG image as the base layer */}
+      
       <Image
         src="/footer1.png"
         alt="Traffic Signal"
@@ -16,10 +16,9 @@ const InteractiveTrafficSignal: React.FC = () => {
         className="rounded-lg" 
       />
 
-      {/* Overlay for the links */}
       <div className="absolute inset-0">
         
-        {/* --- Red Light: Instagram --- */}
+        
         <Link 
           href="https://www.instagram.com/pr4veennn/"
           target="_blank"
@@ -30,12 +29,12 @@ const InteractiveTrafficSignal: React.FC = () => {
                           blur-lg opacity-0 
                           group-hover:opacity-75 transition-opacity duration-300"
           ></div>
-          {/* CHANGED: text-white/80 to text-white/50, group-hover:text-white to group-hover:text-white/70 */}
+          
           <Instagram className="relative z-10 w-full h-full text-white/50 
                                 group-hover:text-white/70 transition-colors" />
         </Link>
         
-        {/* --- Yellow Light: LinkedIn --- */}
+        
         <Link 
           href="https://www.linkedin.com/in/praveenkumarkotipalli/"
           target="_blank"
@@ -46,12 +45,12 @@ const InteractiveTrafficSignal: React.FC = () => {
                           blur-lg opacity-0 
                           group-hover:opacity-75 transition-opacity duration-300"
           ></div>
-          {/* CHANGED: text-white/80 to text-white/50, group-hover:text-white to group-hover:text-white/70 */}
+          
           <Linkedin className="relative z-10 w-full h-full text-white/50 
                                group-hover:text-white/70 transition-colors" />
         </Link>
 
-        {/* --- Green Light: GitHub --- */}
+        
         <Link 
           href="https://github.com/praveenkotipalli"
           target="_blank"
@@ -62,7 +61,7 @@ const InteractiveTrafficSignal: React.FC = () => {
                           blur-lg opacity-0 
                           group-hover:opacity-75 transition-opacity duration-300"
           ></div>
-          {/* CHANGED: text-white/80 to text-white/50, group-hover:text-white to group-hover:text-white/70 */}
+         
           <Github className="relative z-10 w-full h-full text-white/50 
                              group-hover:text-white/70 transition-colors" />
         </Link>

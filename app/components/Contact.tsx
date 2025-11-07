@@ -1,32 +1,32 @@
-// app/components/Contact.tsx
+
 'use client'; 
 
-// 1. Import useState and emailjs
+
 import React, { useRef, useState } from 'react';
 import confetti from "canvas-confetti"; 
 import { MorphingText } from '@/components/ui/morphing-text';
 import InteractiveTrafficSignal from './InteractiveTrafficSignal';
-import emailjs from '@emailjs/browser'; // 2. Import EmailJS
+import emailjs from '@emailjs/browser'; 
 
-// Helper function for fireworks
+
 const randomInRange = (min: number, max: number) =>
   Math.random() * (max - min) + min;
 
 const Contact: React.FC = () => {
   const formRef = useRef<HTMLFormElement | null>(null);
-  // 3. Add states for loading and success
+  
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  // 4. Add your EmailJS keys
+  
   const serviceID = "service_7qv3i6t";
   const templateID = "template_s4e19pb";
   const publicKey = "dejggMqXoQjWcHNX6";
 
-  // 5. Make handleSubmit async and add EmailJS logic
+ 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true); // Start loading
+    setIsLoading(true); 
 
     if (!serviceID || !templateID || !publicKey) {
       alert("EmailJS keys are missing.");
@@ -35,15 +35,15 @@ const Contact: React.FC = () => {
     }
 
     try {
-      // 6. Send the email
+      
       await emailjs.sendForm(serviceID, templateID, formRef.current!, publicKey);
 
-      // --- 7. Run success logic ---
-      setIsSuccess(true); // Show success message
-      fireFireworks(); // Fire confetti
+      
+      setIsSuccess(true); 
+      fireFireworks();
 
       if (formRef.current) {
-        formRef.current.reset(); // Reset the form
+        formRef.current.reset(); 
       }
       
     } catch (error) {
@@ -51,10 +51,10 @@ const Contact: React.FC = () => {
       alert("Something went wrong. Please try again.");
     }
 
-    setIsLoading(false); // Stop loading
+    setIsLoading(false); 
   };
   
-  // 8. Moved fireworks logic into its own function
+ 
   const fireFireworks = () => {
     const duration = 5 * 1000;
     const animationEnd = Date.now() + duration;
@@ -84,7 +84,7 @@ const Contact: React.FC = () => {
       className="px-10 text-white rounded-tl-2xl rounded-tr-2xl relative min-h-screen
                  flex flex-col justify-center"
     >
-      {/* 9. Fixed invalid margins and font size */}
+      
       <div className="text-center mb-16 mt-16 relative z-10">
         <MorphingText
           texts={["Let's Talk.", "Let's Build.", "Say Hello."]}
@@ -95,7 +95,7 @@ const Contact: React.FC = () => {
       <div className="max-w-6xl mx-auto w-full flex flex-col md:flex-row md:gap-16 md:items-center">
         <div className="md:w-1/2">
           
-          {/* 10. Conditional rendering for success message */}
+         
           {isSuccess ? (
             <div className="text-center text-2xl md:text-3xl font-medium text-gray-300 h-full flex items-center justify-center">
               <p>Thanks for your message! <br/> I'll get back to you soon.</p>
@@ -153,9 +153,9 @@ const Contact: React.FC = () => {
                 <button 
                   type="submit"
                   className="form-submit-link"
-                  disabled={isLoading} // Disable button when sending
+                  disabled={isLoading} 
                 >
-                  {/* 11. Show loading text */}
+                 
                   {isLoading ? "Sending..." : "[ Send It → ]"}
                 </button>
               </div>
