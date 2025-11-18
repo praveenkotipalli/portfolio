@@ -1,22 +1,22 @@
-// app/components/ProjectCard.tsx
+
 "use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { motion } from "framer-motion";
 
-// 1. Define the props our card will accept, including the hover events
+
 interface ProjectCardProps {
   title: string;
   description: string;
   staticImage: string;
   hoverImage: string;
   href: string;
-  onMouseEnter?: () => void; // <-- ADD THIS
-  onMouseLeave?: () => void; // <-- ADD THIS
+  onMouseEnter?: () => void; 
+  onMouseLeave?: () => void; 
 }
 
-// 2. Change to React.forwardRef so we can pass a ref to it
+
 export const ProjectCard = React.forwardRef<
   HTMLDivElement,
   ProjectCardProps
@@ -26,16 +26,16 @@ export const ProjectCard = React.forwardRef<
   staticImage, 
   hoverImage, 
   href, 
-  onMouseEnter, // <-- ADD THIS
-  onMouseLeave  // <-- ADD THIS
+  onMouseEnter,
+  onMouseLeave 
 }, ref) => {
   return (
-    // 3. Apply the hover events to the outer motion.div
+   
     <motion.div
       ref={ref}
-      className="w-full" // <-- 1. REMOVED max-w-xs from here
-      onMouseEnter={onMouseEnter} // <-- ADD THIS
-      onMouseLeave={onMouseLeave} // <-- ADD THIS
+      className="w-full"
+      onMouseEnter={onMouseEnter} 
+      onMouseLeave={onMouseLeave} 
     >
       <Link
         href={href}
@@ -44,13 +44,11 @@ export const ProjectCard = React.forwardRef<
                    cursor-none
                    
                    transition-shadow duration-300 ease-in-out
-                   hover:shadow-2xl" // <-- 2. ADDED shadow transition
+                   hover:shadow-2xl" 
                    
         target="_blank"
       >
-        {/* --- All your existing image and text layers stay the same --- */}
-        
-        {/* Static Image */}
+       
         <Image
           src={staticImage}
           alt={`${title} static preview`}
@@ -60,7 +58,7 @@ export const ProjectCard = React.forwardRef<
                      group-hover:opacity-0"
         />
         
-        {/* Hover Image */}
+        
         <Image
           src={hoverImage}
           alt={`${title} animated preview`}
@@ -71,14 +69,13 @@ export const ProjectCard = React.forwardRef<
                      group-hover:opacity-100"
         />
         
-        {/* Dark Overlay */}
+        
         <div
           className="absolute inset-0 bg-black 
                      opacity-0 transition-all duration-500
                      group-hover:opacity-50"
         ></div>
   
-        {/* Text Content */}
         <div className="relative z-10 flex flex-col justify-end h-full p-4">
           <h1 className="font-bold text-xl md:text-2xl text-white relative" style={{ color: '#CFCFCF' }}>
             {title}

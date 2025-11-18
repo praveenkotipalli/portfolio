@@ -83,23 +83,28 @@ body.hide-pochita-cursor #pochita-cursor {
 
 /* --- CSS for Smooth Cursor Section --- */
 
-/* 1. This hides the default system cursor */
+/* 1. This hides the default system cursor when in Credentials section */
 body.smooth-cursor-active {
   cursor: none;
 }
 
-/* 2. This hides your custom Pochita cursor */
+/* 2. This hides the default system cursor when hovering on project cards */
+body.hide-cursor-on-projects {
+  cursor: none;
+}
+
+/* 3. This hides your custom Pochita cursor */
 body.smooth-cursor-active #pochita-cursor {
   opacity: 0 !important; /* Use !important to override inline style */
 }
 
-/* 3. This hides the new SmoothCursor by default */
+/* 4. This hides the new SmoothCursor by default */
 #smooth-cursor {
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
 }
 
-/* 4. This shows the new SmoothCursor when active */
+/* 5. This shows the new SmoothCursor when active */
 body.smooth-cursor-active #smooth-cursor {
   opacity: 1;
 }

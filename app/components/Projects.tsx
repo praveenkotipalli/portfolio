@@ -83,8 +83,14 @@ const Projects: React.FC = () => {
                   staticImage={project.staticImage}
                   hoverImage={project.hoverImage}
                   href={project.href}
-                  onMouseEnter={() => document.body.classList.add("hide-pochita-cursor")}
-                  onMouseLeave={() => document.body.classList.remove("hide-pochita-cursor")}
+                  onMouseEnter={() => {
+                    document.body.classList.add("hide-pochita-cursor")
+                    document.body.classList.add("hide-cursor-on-projects")
+                  }}
+                  onMouseLeave={() => {
+                    document.body.classList.remove("hide-pochita-cursor")
+                    document.body.classList.remove("hide-cursor-on-projects")
+                  }}
                 />
               </FollowerPointerCard>
               
