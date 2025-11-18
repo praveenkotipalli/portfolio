@@ -10,6 +10,13 @@ import { desc } from 'framer-motion/client';
 
 // 3. Updated the data to include images and descriptions
 const sideProjects = [
+  {
+    title:"GPT Wrapper for Spotify",
+    href:"https://spotify-gpt-wrapper.vercel.app/",
+    description:"Integrates the Spotify API with Gemini models to convert natural language prompts into curated playlists. This tool replaces static algorithms with dynamic, mood-based recommendations for a highly personalized experience.",
+    imageUrl:"/Screenshot 2025-11-18 094559.png"
+
+  },
   { 
     title: "Notpad (AI Powered Note-Taking App)", 
     href: "https://notpad.me/",
@@ -118,7 +125,12 @@ const SideHustles: React.FC = () => {
                     text-lg text-gray-400 hover:text-white
                   `}
                   style={{ color: '#CFCFCF' }}
-                  
+                  onMouseEnter={() => {
+                    document.body.classList.add("hide-pochita-cursor")
+                  }}
+                  onMouseLeave={() => {
+                    document.body.classList.remove("hide-pochita-cursor")
+                  }}
                 >
                  {project.title}
                 </a>

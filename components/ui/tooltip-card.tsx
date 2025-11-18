@@ -84,12 +84,16 @@ export const Tooltip = ({
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
     updateMousePosition(mouseX, mouseY);
+    // Hide custom cursor when hovering over tooltip
+    document.body.classList.add("hide-pochita-cursor");
   };
 
   const handleMouseLeave = () => {
     setMouse({ x: 0, y: 0 });
     setPosition({ x: 0, y: 0 });
     setIsVisible(false);
+    // Show custom cursor when leaving tooltip
+    document.body.classList.remove("hide-pochita-cursor");
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
