@@ -32,6 +32,61 @@
   to { transform: translateX(-100%); }
 }
 
+/* --- Falling petals on the stitched blossom tree ---
+   Three layers per petal: the outer one falls (with a little wind), the middle
+   one sways side to side and rocks, the shape flips edge-on to read as tumbling. */
+.blossom-petals {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: none;
+}
+.blossom-petals[data-state] {
+  display: block;
+}
+.blossom-petals[data-state='paused'] * {
+  animation-play-state: paused;
+}
+.blossom-petal {
+  position: absolute;
+  width: calc(var(--tree) * 0.042 * var(--petal-size));
+  aspect-ratio: 10 / 12;
+  opacity: 0;
+  animation: petal-fall var(--petal-dur) cubic-bezier(0.35, 0.1, 0.65, 0.95) var(--petal-delay) infinite backwards;
+  will-change: transform, opacity;
+}
+.blossom-petal-sway {
+  display: block;
+  width: 100%;
+  height: 100%;
+  animation: petal-sway calc(var(--petal-dur) / 3) ease-in-out infinite;
+}
+.blossom-petal-shape {
+  display: block;
+  width: 100%;
+  height: 100%;
+  animation: petal-flip calc(var(--petal-dur) / 5) ease-in-out infinite;
+}
+
+@keyframes petal-fall {
+  0% { transform: translate(0, 0); opacity: 0; }
+  10% { opacity: 0.95; }
+  80% { opacity: 0.9; }
+  100% { transform: translate(var(--petal-wind), var(--petal-fall)); opacity: 0; }
+}
+@keyframes petal-sway {
+  0%, 100% { transform: translateX(calc(var(--petal-drift) * -1)) rotate(-30deg); }
+  50% { transform: translateX(var(--petal-drift)) rotate(40deg); }
+}
+@keyframes petal-flip {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(0.3); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blossom-petals { display: none !important; }
+}
+
 body.hide-pochita-cursor #pochita-cursor {
   opacity: 0 !important; /* Use !important to override inline style */
   transition: opacity 0.2s ease-in-out;

@@ -32,6 +32,21 @@ const MOTION_PX = 3;
 // How far toward white the fabric backing under each stitch is tinted.
 const BACKING_LIGHTEN = 0.45;
 
+// Petals drifting down from the canopy once the tree is sewn. Positions are
+// fractions of the tree box (canopy spans ~0.2–0.6 down); they fade out at
+// the roots (GROUND). Durations are long on purpose: a slow, calm fall.
+const PETAL_START_MS = 700;
+const GROUND = 0.93;
+const PETALS = [
+  { x: 0.24, y: 0.5, size: 1.0, dur: 11, delay: 0.2, drift: 0.05, wind: 0.07, color: '#e0729c' },
+  { x: 0.62, y: 0.46, size: 0.8, dur: 13, delay: 2.4, drift: 0.04, wind: 0.1, color: '#eec1d2' },
+  { x: 0.42, y: 0.56, size: 1.15, dur: 10, delay: 4.1, drift: 0.06, wind: 0.05, color: '#d7658e' },
+  { x: 0.76, y: 0.52, size: 0.9, dur: 12, delay: 6.3, drift: 0.035, wind: 0.08, color: '#df6a98' },
+  { x: 0.33, y: 0.42, size: 0.75, dur: 14, delay: 8.0, drift: 0.05, wind: 0.11, color: '#f0c6d6' },
+  { x: 0.54, y: 0.58, size: 1.05, dur: 10.5, delay: 9.6, drift: 0.045, wind: 0.06, color: '#e1709c' },
+  { x: 0.18, y: 0.44, size: 0.85, dur: 12.5, delay: 11.2, drift: 0.04, wind: 0.09, color: '#eec1d2' },
+];
+
 // Empty cells around the pattern on each side.
 const BOUNDS = (() => {
   const { cols, rows, units } = CHERRY_BLOSSOM;
@@ -48,10 +63,12 @@ const BOUNDS = (() => {
 const StitchedBlossomTree: React.FC<{ className?: string }> = ({ className = '' }) => {
   const hostRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const petalsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const host = hostRef.current;
     const canvas = canvasRef.current;
+    const petals = petalsRef.current;
     if (!host || !canvas) return;
 
     const { cols, rows, cell, units } = CHERRY_BLOSSOM;
@@ -233,11 +250,19 @@ const StitchedBlossomTree: React.FC<{ className?: string }> = ({ className = '' 
     ro.observe(host);
     resize();
 
+    // Petals start falling once the tree is sewn, and pause while it's off screen.
+    let petalTimer: ReturnType<typeof setTimeout> | undefined;
+    let petalsFalling = false;
+    const syncPetals = () => {
+      if (petals && petalsFalling) petals.dataset.state = visible ? 'falling' : 'paused';
+    };
+
     // Sew the tree in the first time it's properly on screen, and only
     // animate while it stays visible.
     const io = new IntersectionObserver(
       ([entry]) => {
         visible = entry.isIntersecting;
+        syncPetals();
         if (!visible) {
           if (raf) cancelAnimationFrame(raf);
           raf = 0;
@@ -246,7 +271,13 @@ const StitchedBlossomTree: React.FC<{ className?: string }> = ({ className = '' 
         if (!sewn && entry.intersectionRatio >= 0.5) {
           sewn = true;
           if (reduceMotion) engine.revealAll();
-          else engine.sewIn(performance.now());
+          else {
+            engine.sewIn(performance.now());
+            petalTimer = setTimeout(() => {
+              petalsFalling = true;
+              syncPetals();
+            }, PETAL_START_MS);
+          }
         }
         wake();
       },
@@ -257,6 +288,7 @@ const StitchedBlossomTree: React.FC<{ className?: string }> = ({ className = '' 
     return () => {
       io.disconnect();
       ro.disconnect();
+      clearTimeout(petalTimer);
       cancelAnimationFrame(raf);
       if (hover.anim !== null) cancelAnimationFrame(hover.anim);
       cancelSettle();
@@ -288,6 +320,37 @@ const StitchedBlossomTree: React.FC<{ className?: string }> = ({ className = '' 
         }}
       >
         <canvas ref={canvasRef} className="pointer-events-none absolute inset-0 block size-full" />
+        <div ref={petalsRef} className="blossom-petals">
+          {PETALS.map((p, i) => (
+            <span
+              key={i}
+              className="blossom-petal"
+              style={
+                {
+                  left: `${p.x * 100}%`,
+                  top: `${p.y * 100}%`,
+                  '--petal-size': p.size,
+                  '--petal-dur': `${p.dur}s`,
+                  '--petal-delay': `${p.delay}s`,
+                  '--petal-fall': `calc(var(--tree) * ${GROUND - p.y})`,
+                  '--petal-drift': `calc(var(--tree) * ${p.drift})`,
+                  '--petal-wind': `calc(var(--tree) * ${p.wind})`,
+                } as React.CSSProperties
+              }
+            >
+              <span className="blossom-petal-sway">
+                <svg viewBox="0 0 10 12" className="blossom-petal-shape">
+                  <path
+                    d="M5 11.6C1.4 9.2.2 5.6 1.7 2 2.6.6 4 .8 5 2.4 6 .8 7.4.6 8.3 2c1.5 3.6.3 7.2-3.3 9.6Z"
+                    fill={p.color}
+                  />
+                  {/* A darker centre line, like the satin stitch down a petal. */}
+                  <path d="M5 3.4V10" stroke="#a8454e" strokeOpacity="0.35" strokeWidth="0.6" strokeLinecap="round" />
+                </svg>
+              </span>
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );
