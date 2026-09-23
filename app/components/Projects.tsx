@@ -52,7 +52,7 @@ const Projects: React.FC = () => {
       id="projects" 
       ref={sectionRef} 
       style={{ backgroundColor: '#1A1A1A' }}
-      className="py-24 px-10 text-white overflow-hidden"
+      className="py-20 md:py-24 px-6 md:px-10 text-white overflow-hidden"
     >
       <div className="flex flex-col md:gap-16">
         {/* ... (Title div) ... */}
@@ -60,7 +60,7 @@ const Projects: React.FC = () => {
           ref={titleRef} 
           style={{ willChange: 'transform' }}
         > 
-          <h2 className="text-6xl font- text-center md:text-left md:ml-20 mb-16" style={{ color: '#CFCFCF' }}>
+          <h2 className="text-5xl md:text-6xl text-center md:text-left md:ml-20 mb-12 md:mb-16" style={{ color: '#CFCFCF' }}>
             Projects
           </h2>
         </div>

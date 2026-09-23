@@ -56,14 +56,15 @@ const Credentials: React.FC = () => {
     <section 
       id="credentials" 
       style={{ backgroundColor: '#CFCFCF' }} 
-      className="py-24 px-10 text-black rounded-tl-2xl rounded-tr-2xl"
+      // overflow-x-clip: the fanned-out certificates must never widen the page
+      className="py-20 md:py-24 px-6 md:px-10 text-black rounded-tl-2xl rounded-tr-2xl overflow-x-clip"
       
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       
       <div className="text-center">
-        <h2 ref={titleRef} className="mb-20 text-4xl md:text-6xl font-semibold leading-relaxed">
+        <h2 ref={titleRef} className="mb-12 md:mb-20 text-4xl md:text-6xl font-semibold leading-relaxed">
           My{" "}
           {startAnimation ? (
             <Highlighter  action="underline" color="#87CEFA">
@@ -76,7 +77,7 @@ const Credentials: React.FC = () => {
       </div>
 
       
-      <div className="w-full max-w-4xl mx-auto mb-24">
+      <div className="w-full max-w-4xl mx-auto mb-16 md:mb-24">
         {/* <h3 className="text-4xl font-semibold mb-8 text-center md:text-left">
           {startAnimation ? (
             <Highlighter action="highlight" color="#FF9800">
@@ -94,7 +95,7 @@ const Credentials: React.FC = () => {
 
        
         <div className="md:w-1/2">
-          <h3 className="text-4xl font-semibold mb-8">
+          <h3 className="text-3xl md:text-4xl font-semibold mb-6 md:mb-8">
             {startAnimation ? (
               <Highlighter action="highlight" color="#FF9800">
                 Experience
@@ -105,16 +106,16 @@ const Credentials: React.FC = () => {
           </h3>
           {workExperience.map((job) => (
             <div key={job.company} className="mb-6">
-              <h4 className="text-2xl font-semibold">{job.role}</h4>
-              <p className="text-xl text-gray-700">{job.company}</p>
+              <h4 className="text-xl md:text-2xl font-semibold">{job.role}</h4>
+              <p className="text-lg md:text-xl text-gray-700">{job.company}</p>
               <p className="text-lg text-gray-600">{job.duration}</p>
             </div>
           ))}
         </div>
 
        
-        <div className="md:w-1/2 mt-16 md:mt-0">
-          <h3 className="text-4xl font-semibold mb-8">
+        <div className="md:w-1/2 mt-12 md:mt-0">
+          <h3 className="text-3xl md:text-4xl font-semibold mb-6 md:mb-8">
             {startAnimation ? (
               <Highlighter action="highlight" color="#FF9800">
                 My Toolkit
@@ -129,7 +130,7 @@ const Credentials: React.FC = () => {
               <span 
                 key={skill} 
                 className={`
-                  p-3 rounded-lg font-semibold shadow-md
+                  px-3 py-2 md:p-3 rounded-lg font-semibold shadow-md text-sm md:text-base
                   ${index % 3 === 0 ? 'bg-gray-700 text-white' : 'bg-gray-200 text-black'}
                 `}
               >

@@ -6,6 +6,7 @@ import React, { useRef, useEffect } from 'react';
 import { Tooltip } from "@/components/ui/tooltip-card";
 // 2. Import the new card we just made
 import ProjectTooltipCard from "./ProjectTooltipCard";
+import StitchedBlossomTree from "./StitchedBlossomTree";
 import { desc } from 'framer-motion/client';
 
 // 3. Updated the data to include images and descriptions
@@ -78,19 +79,19 @@ const SideHustles: React.FC = () => {
       id="side-hustles" 
       ref={sectionRef} 
       style={{ backgroundColor: '#111111', color: '#CFCFCF' }} 
-      className="py-24 px-10 text-white rounded-tl-2xl rounded-tr-2xl"
+      className="py-20 md:py-24 px-6 md:px-10 text-white rounded-tl-2xl rounded-tr-2xl"
       
     >
       <div className="flex flex-col md:flex-row md:gap-16">
-        {/* Left Column (Title) - Unchanged */}
-        <div 
-          className="md:w-1/3"
-          ref={titleRef} 
-          style={{ willChange: 'transform' }}
-        > 
-          <h2 className="text-6xl font- ml-20 mb-16 md:mb-0" >
-            Code & Curiosities
-          </h2>
+        {/* Left Column: title on top, tree anchored to the bottom of the list */}
+        <div className="flex flex-col md:w-1/3">
+          {/* Parallax only moves the title, so the tree stays pinned to the list's last line. */}
+          <div ref={titleRef} style={{ willChange: 'transform' }}>
+            <h2 className="text-5xl md:text-6xl md:ml-20 mb-8 md:mb-0" >
+              Code & Curiosities
+            </h2>
+          </div>
+          <StitchedBlossomTree className="mb-12 md:ml-20 md:mb-0 md:mt-auto md:pt-10" />
         </div>
         
         {/* --- UPDATED Right Column (Project List) --- */}

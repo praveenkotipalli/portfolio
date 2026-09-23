@@ -5,7 +5,8 @@ import { Instagram, Linkedin, Github } from 'lucide-react';
 
 const InteractiveTrafficSignal: React.FC = () => {
   return (
-    <div className="relative w-full max-w-[500px] ml-70 aspect-[3/4]">
+    // Centred and smaller on phones; pushed right beside the form on large screens.
+    <div className="relative w-full max-w-[280px] sm:max-w-[360px] md:max-w-[500px] lg:ml-70 aspect-[3/4]">
       
       
       <Image

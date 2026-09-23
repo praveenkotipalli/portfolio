@@ -6,30 +6,27 @@ const MarqueeText: React.FC = () => {
     style={{ color: '#CFCFCF' }}>
       
       <div className="animate-marquee flex-shrink-0">
-        <span 
-          // CHANGED from text-8xl to text-9xl
-          className="text-[12rem] mx-8 font-kaldera" 
+        <span
+          // Smaller on phones so the name still reads as a band, not a single letter
+          className="text-[7.5rem] md:text-[12rem] mx-6 md:mx-8 font-kaldera"
         >
-          PRAVEEN KOTIPALLI     ‎ 
+          PRAVEEN KOTIPALLI     ‎
         </span>
-        <span 
-          // CHANGED from text-8xl to text-9xl
-          className="text-[12rem] mx-8 font-kaldera" 
+        <span
+          className="text-[7.5rem] md:text-[12rem] mx-6 md:mx-8 font-kaldera"
         >
-          PRAVEEN KOTIPALLI     ‎ 
+          PRAVEEN KOTIPALLI     ‎
         </span>
       </div>
 
       <div className="animate-marquee flex-shrink-0" aria-hidden="true">
-        <span 
-          // CHANGED from text-8xl to text-9xl
-          className="text-[12rem] mx-8 font-kaldera" 
+        <span
+          className="text-[7.5rem] md:text-[12rem] mx-6 md:mx-8 font-kaldera"
         >
-          PRAVEEN KOTIPALLI     ‎ 
+          PRAVEEN KOTIPALLI     ‎
         </span>
-        <span 
-          // CHANGED from text-8xl to text-9xl
-          className="text-[12rem] mx-8 font-kaldera" 
+        <span
+          className="text-[7.5rem] md:text-[12rem] mx-6 md:mx-8 font-kaldera"
         >
           PRAVEEN KOTIPALLI     ‎ 
         </span>

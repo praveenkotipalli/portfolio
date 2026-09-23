@@ -31,9 +31,11 @@ const Hero: React.FC = () => {
           width={500} 
           height={700}           
           
-          className="object-contain h-[106vh] w-auto mt-18" 
+          className="object-contain h-[106vh] w-auto mt-18"
           onMouseEnter={() => setShowBubble(true)}
-            onMouseLeave={() => setShowBubble(false)}
+          onMouseLeave={() => setShowBubble(false)}
+          // Touch screens have no hover: a tap toggles the greeting instead.
+          onClick={() => setShowBubble((shown) => !shown)}
           priority 
         />
         <SpeechBubble 

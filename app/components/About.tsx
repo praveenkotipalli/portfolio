@@ -42,7 +42,7 @@ const About: React.FC = () => {
       id="about" 
       ref={sectionRef} 
       style={{ backgroundColor: '#CFCFCF' }}
-      className="py-24 px-10 text-black rounded-tl-2xl rounded-tr-2xl overflow-hidden"
+      className="py-20 md:py-24 px-6 md:px-10 text-black rounded-tl-2xl rounded-tr-2xl overflow-hidden"
     >
       
       <div 
@@ -54,7 +54,7 @@ const About: React.FC = () => {
           ref={titleRef} 
           style={{ willChange: 'transform' }}
         > 
-          <h2 className="text-6xl font ml-20 mb-4 md:mb-0">About Me</h2>
+          <h2 className="text-5xl md:text-6xl md:ml-20 mb-8 md:mb-0">About Me</h2>
         </div>
         
         <div className="md:w-2/3"> 

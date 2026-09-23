@@ -81,8 +81,8 @@ const Contact: React.FC = () => {
     <section 
       id="contact" 
       style={{ backgroundColor: '#111111' }} 
-      className="px-10 text-white rounded-tl-2xl rounded-tr-2xl relative min-h-screen
-                 flex flex-col justify-center"
+      className="px-6 md:px-10 pb-16 md:pb-0 text-white rounded-tl-2xl rounded-tr-2xl relative min-h-screen
+                 flex flex-col justify-center overflow-x-clip"
     >
       
       <div className="text-center mb-16 mt-16 relative z-10">
@@ -163,7 +163,7 @@ const Contact: React.FC = () => {
           )}
         </div>
         
-        <div className="md:w-1/2 flex flex-col items-center relative z-10">
+        <div className="md:w-1/2 mt-12 md:mt-0 flex flex-col items-center relative z-10">
           <InteractiveTrafficSignal />
         </div>
       </div>
