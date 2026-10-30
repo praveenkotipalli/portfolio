@@ -1,0 +1,31 @@
+# Rebuilt inside the image
+node_modules
+.next
+out
+build
+*.tsbuildinfo
+next-env.d.ts
+
+# VCS and tooling
+.git
+.gitignore
+.vscode
+.idea
+.playwright-mcp
+.sf
+.claude
+
+# Secrets never belong in the image; pass them at runtime instead
+.env*
+*.pem
+
+# Docker files themselves
+Dockerfile
+.dockerignore
+docker-compose*.yml
+compose*.yml
+
+# Misc
+npm-debug.log*
+.DS_Store
+*.md

@@ -1,0 +1,14 @@
+services:
+  portfolio:
+    build: .
+    image: zovion-portfolio:latest
+    container_name: zovion-portfolio
+    restart: unless-stopped
+    ports:
+      # Host port is overridable: APP_PORT=8080 docker compose up -d
+      - "${APP_PORT:-3000}:3000"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
